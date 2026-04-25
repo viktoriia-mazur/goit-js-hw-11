@@ -38,17 +38,21 @@ export function createGallery(images) {
 }
 
 export function clearGallery() {
-    gallery.innerHTML = '';
+    if (gallery) {
+        gallery.innerHTML = '';
+    }
 }
 
 export function showLoader() {
-    document.querySelector('.loader').classList.add('active');
+    if (loader) {
+        loader.classList.add('active');
+    }
 }
 
 export function hideLoader() {
-    document.querySelector('.loader').classList.remove('active');
+    if (loader) {
+        loader.classList.remove('active');
+    }
 }
 
-export function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+
