@@ -18,8 +18,10 @@ form.addEventListener('submit', async e => {
     const query = e.target.elements['search-text'].value.trim();
 
     if (!query) {
-    iziToast.error({
+    iziToast.warning({
+        title: 'Caution',
         message: 'Please enter a search query!',
+        position: 'topRight',
     });
     return;
     }
@@ -34,8 +36,9 @@ form.addEventListener('submit', async e => {
 
     if (data.hits.length === 0) {
         iziToast.error({
-        message:
-            'Sorry, there are no images matching your search query. Please try again!',
+            title: 'No Results',
+            message: 'Sorry, there are no images matching your search query. Please try again!',
+            position: 'topRight',
         });
         return;
     }
@@ -43,7 +46,9 @@ form.addEventListener('submit', async e => {
     createGallery(data.hits);
     } catch (error) {
     iziToast.error({
-        message: 'Error fetching images',
+        title: 'Error',
+        message: 'Failed to fetch images. Please try again later.',
+        position: 'topRight',
     });
     } finally {
     hideLoader();
